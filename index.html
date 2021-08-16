@@ -16,28 +16,27 @@
 
     <div class="container py-5">
         <!-- Form  -->
-        <div class="col-8 mx-auto">
-            <form class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
-                <div class="col-10 d-flex">
-                    <input type="text" class="form-control" id="search-input" placeholder="Enter your movie name">
-                    <button type="button" class="btn btn-primary ms-3" id="search-btn">Search</button>
-                </div>
-            </form>
 
-            <!-- Form End -->
+        <form class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
+            <div class="col d-flex">
+                <input type="text" class="form-control" id="search-input" placeholder="Enter your movie name">
+                <button type="button" class="btn btn-primary ms-3" id="search-btn">Search</button>
+            </div>
+        </form>
+
+        <!-- Form End -->
+        <div class="col-8 mx-auto">
             <div class="row row-cols-1 row-cols-md-2 text-white py-5">
                 <div class="col">
                     <img src="" id="movie-poster" class="d-none" alt="Movie poster">
                 </div>
                 <div class="col">
                     <h1 id="title"></h1>
-                    <p id="year"></p>
                     <p id="released"></p>
                     <p id="genre"></p>
                     <p id="director"></p>
                     <p id="plot"></p>
                     <!-- <p id="rating"></p> -->
-
                 </div>
             </div>
         </div>
