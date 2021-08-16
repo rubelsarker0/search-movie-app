@@ -41,6 +41,7 @@ function displayMovieDetails(movieDetails) {
 }
 
 function ratings(ratings) {
+	ratingFields.textContent = '';
 	ratingsTitle.classList.remove('d-none');
 	ratings.forEach((rating) => {
 		ratingFields.innerHTML += `<li>${rating.Source} - ${rating.Value}</li>`;
