@@ -7,29 +7,45 @@ const plot = document.getElementById('plot');
 const plotTitle = document.getElementById('plot-title');
 const ratingFields = document.getElementById('rating-fields');
 const ratingsTitle = document.getElementById('ratings-title');
+const searchInput = document.getElementById('search-input');
 const apiKey = '4efdd0b3';
 
 document.getElementById('search-btn').addEventListener('click', async () => {
-	const searchInput = document.getElementById('search-input');
-	const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&t=${searchInput.value}`;
-
-	// omdb api call to bring the movie
-	const response = await axios.get(apiUrl);
+	const response = await getMovie();
 	// display movie details
 	displayMovieDetails(response.data);
-
 	// Ratings
 	ratings(response.data.Ratings);
+});
 
+// document
+// 	.getElementById('searchInput')
+// 	.addEventListener('keypress', async (e) => {
+// 		var keyNum = e.keyCode || e.which;
+// 		if (keyNum === 13) {
+// 			e.preventDefault();
+// 			const response = await getMovie();
+// 			// display movie details
+// 			displayMovieDetails(response.data);
+// 			// Ratings
+// 			ratings(response.data.Ratings);
+// 		}
+// 	});
+
+async function getMovie() {
+	const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&t=${searchInput.value}`;
+	// omdb api call to bring the movie
+	const response = await axios.get(apiUrl);
 	// clear the search input field
 	searchInput.value = '';
-});
+	return response;
+}
 
 function displayMovieDetails(movieDetails) {
 	const { Title, Released, Genre, Director, Plot, Poster } = movieDetails;
 	//show movie poster
-	moviePoster.setAttribute('src', Poster);
 	moviePoster.classList.remove('d-none');
+	moviePoster.setAttribute('src', Poster);
 	//Summary
 	plotTitle.classList.remove('d-none');
 	plot.textContent = `${Plot}`;
@@ -47,12 +63,3 @@ function ratings(ratings) {
 		ratingFields.innerHTML += `<li>${rating.Source} - ${rating.Value}</li>`;
 	});
 }
-
-// async function getMovie() {
-// 	const searchInput = document.getElementById('search-input');
-// 	const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&t=${searchInput.value}`;
-
-// 	// omdb api call to bring the movie
-// 	const response = await axios.get(apiUrl);
-// 	return response;
-// }

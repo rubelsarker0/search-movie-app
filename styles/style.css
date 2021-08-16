@@ -1,3 +1,7 @@
 /* #movie-poster {
 	display: none;
 } */
+
+#plot {
+	text-align: justify;
+}
